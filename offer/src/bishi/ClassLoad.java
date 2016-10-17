@@ -11,6 +11,9 @@ public class ClassLoad {
 		  a++;
 		  b++;
 		  
+		  System.out.println("123");
+		  
+		  
 	  }
 	
 	  public  static ClassLoad getClassload(){
