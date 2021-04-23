@@ -75,3 +75,44 @@ class Solution:
                 return False
 
         return dfs(str1, str2)
+
+# 91. 解码方法 -- 回溯算法
+class Solution:
+    def numDecodings(self, s: str) -> int:
+
+        @cache
+        def dfs(s):
+            if not s: return 1
+            size = len(s)
+            if size == 1:
+                if s == "0":
+                    return 0
+                else:
+                    return 1
+            else:
+                if s[0] == "0":
+                    return 0
+                num = int(s[:2])
+                if num >= 1 and num <= 26:
+                    return dfs(s[1:]) + dfs(s[2:])
+                else:
+                    return dfs(s[1:])
+
+        return dfs(s)
+
+
+# 368. 最大整除子集
+# dp[i] 代表 以 i 结尾 的最大子集长度
+class Solution:
+    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+        size = len(nums)
+        nums.sort()
+        dp = [[val] for _, val in enumerate(nums)]
+        res = dp[0]
+        for i in range(1, size):
+            for j in range(i):
+                if nums[i] % nums[j] == 0 and len(dp[j]) + 1 > len(dp[i]):
+                    dp[i] = dp[j] + [nums[i]]
+                    if len(dp[i]) > len(res):
+                        res = dp[i]
+        return res
