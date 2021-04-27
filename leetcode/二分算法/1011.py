@@ -5,7 +5,7 @@ class Solution:
         l = max(weights)
         # 优化细节： 尽可能缩减 二分算法的左右边界
         r = l * len(weights) // D
-        ans = r            
+        ans = r
         while l <= r:
             mid = l + (r - l) // 2
             cur = 0
