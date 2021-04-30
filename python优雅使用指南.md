@@ -75,6 +75,8 @@ product(list1, list2, ...)               # 所有 list 的笛卡尔积
     9. __setitem__，__delitem__	连同上面的 __getitem__，使类像 dict 一样使用
     10. __iter__， __next__	使该类变得可迭代，可以用 for ... in ... 遍历
 
+21. ~(num ^ 0xffffffff) 假如num > max_int，将 num 转为负数表示的方法
+22. 
 
 
 
