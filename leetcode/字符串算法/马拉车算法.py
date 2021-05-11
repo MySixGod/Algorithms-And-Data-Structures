@@ -15,7 +15,7 @@ class Solution:
                 mirror = 2 * center - i
                 p[i] = min(max_right - i, p[mirror])
 
-            l = i - (1 + p[i]) 
+            l = i - (1 + p[i])
             r = i + (1 + p[i])
 
             while l >= 0 and r < size and s[l] == s[r]:
