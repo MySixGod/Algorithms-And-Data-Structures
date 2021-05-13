@@ -116,3 +116,30 @@ class Solution:
                     if len(dp[i]) > len(res):
                         res = dp[i]
         return res
+
+
+# 1269. 停在原地的方案数 -- 经典记忆化递归
+class Solution:
+    def numWays(self, steps: int, arrLen: int) -> int:
+
+        mod = 10 ** 9 + 7
+
+        @cache
+        def dfs(pos, rest):
+            if pos == 0 and rest == 0:
+                return 1
+            if rest <= 0: 
+                return 0
+            if pos > rest or pos > arrLen - 1:
+                return 0
+            elif pos == rest:
+                return 1
+            else:
+                a = dfs(pos, rest - 1)
+                b = 0
+                c = dfs(pos + 1, rest - 1)
+                if pos > 0:
+                    b = dfs(pos - 1, rest - 1)
+                return a + b + c
+
+        return dfs(0, steps) % mod
